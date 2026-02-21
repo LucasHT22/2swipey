@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="2swipe"
-run/main_scene="uid://cyawequopbcgr"
+run/main_scene="uid://yiw4hedt8ij6"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 

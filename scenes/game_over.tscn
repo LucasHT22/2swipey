@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://kf2wua2no8bm"]
+[gd_scene load_steps=0 format=3 uid="uid://kf2wua2no8bm"]
 
 [node name="GameOver" type="Node2D"]
 
