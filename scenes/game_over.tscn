@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://kf2wua2no8bm"]
+
+[node name="GameOver" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1147.0
+offset_bottom = 657.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 1157.0
+offset_bottom = 662.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer"]
+layout_mode = 2
+text = "GAME OVER!!"
+horizontal_alignment = 1
+vertical_alignment = 1

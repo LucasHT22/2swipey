@@ -34,6 +34,8 @@ func check_answer():
 	else:
 		Global.progress -= 10
 		print("Wrong:", Global.progress)
+		if Global.progress <= 0:
+			get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	
 	get_clue()
 
