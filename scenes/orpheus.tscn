@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b3oetkbhrdxup"]
 
-[ext_resource type="Script" uid="uid://c2aaudgcr33mj" path="res://scenes/orpheus.gd" id="1_1ltk7"]
-[ext_resource type="Texture2D" uid="uid://7023g1umbth5" path="res://assets/orpheusidle.PNG" id="1_488sw"]
+[ext_resource type="Script" uid="uid://c2aaudgcr33mj" path="res://scripts/orpheus.gd" id="1_1ltk7"]
+[ext_resource type="Texture2D" uid="uid://fgakw0adp20x" path="res://assets/orpheusidle.PNG" id="1_488sw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ltk7"]
 atlas = ExtResource("1_488sw")
@@ -14,10 +14,10 @@ region = Rect2(500, 0, 500, 566)
 [sub_resource type="SpriteFrames" id="SpriteFrames_fqoqe"]
 animations = [{
 "frames": [{
-"duration": 1.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1ltk7")
 }, {
-"duration": 1.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1sor2")
 }],
 "loop": true,
