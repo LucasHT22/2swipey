@@ -11,13 +11,8 @@ config_version=5
 [application]
 
 config/name="2swipe"
-<<<<<<< HEAD
 run/main_scene="uid://b8am3hpwh01ro"
 config/features=PackedStringArray("4.5", "Mobile")
-=======
-run/main_scene="res://scenes/tips_menu.tscn"
-config/features=PackedStringArray("4.5", "Mobile")
->>>>>>> c686fe5b12e9020df78a1fc55c1754db6aedc1d3
 config/icon="res://icon.svg"
 
 [autoload]
