@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8am3hpwh01ro"]
+
+[ext_resource type="PackedScene" uid="uid://b3oetkbhrdxup" path="res://scenes/orpheus.tscn" id="1_d6fun"]
+
+[node name="Level2" type="Node2D"]
+
+[node name="orpheus" parent="." instance=ExtResource("1_d6fun")]
