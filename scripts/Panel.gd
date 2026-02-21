@@ -4,14 +4,16 @@ var clues = [
 	"veggie bowl",
 	"island money",
 	"big red ball",
-	"buy in bulk"
+	"buy in bulk",
+	"stttttttttttttttrrrrrrrrrrrike!"
 ]
 
 var results = [
-	"%B6010563596189797¨CHIPOTLE",
-	"%B4859530006682470ËGAN;SOFIA",
+	"%B6010563596189797^CHIPOTLE",
+	"%B4859530006682470^",
 	"",
-	"%7001112034796255¨BOORGU;MANITEJ"
+	"%7001112034796255^",
+	"%6686=6673103695066313650?"
 ]
 
 var current_index : int
