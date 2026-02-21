@@ -1,15 +1,14 @@
-[gd_scene load_steps=18 format=4 uid="uid://b8am3hpwh01ro"]
+[gd_scene load_steps=21 format=4 uid="uid://b8am3hpwh01ro"]
 
 [ext_resource type="PackedScene" uid="uid://b3oetkbhrdxup" path="res://scenes/orpheus.tscn" id="1_d6fun"]
 [ext_resource type="PackedScene" uid="uid://dasugdubqg1s1" path="res://scenes/heidi.tscn" id="2_if4l3"]
-[ext_resource type="Script" uid="uid://xmcjbsdlguai" path="res://scenes/heidi.gd" id="3_4038r"]
+[ext_resource type="Script" uid="uid://xmcjbsdlguai" path="res://scripts/heidi.gd" id="3_4038r"]
 [ext_resource type="Texture2D" uid="uid://c6a2uillg71ax" path="res://assets/platformsmall.PNG" id="4_2k3dv"]
+[ext_resource type="Script" uid="uid://bso68vklhlo3g" path="res://scripts/camera_2d.gd" id="4_hrcei"]
 [ext_resource type="Texture2D" uid="uid://bb37be0e2wafb" path="res://assets/platformgrasssmall.PNG" id="5_yqkch"]
 [ext_resource type="Texture2D" uid="uid://c3cmbsjpcw0q2" path="res://assets/platform2small.PNG" id="6_6ep0u"]
 [ext_resource type="Texture2D" uid="uid://dus1bkobhfxsm" path="res://assets/platformlong.png" id="7_6ep0u"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_if4l3"]
-size = Vector2(1155.5, 51.5)
+[ext_resource type="PackedScene" uid="uid://v5uxfxkiw0fh" path="res://scenes/killzone.tscn" id="9_xa7n4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_alqfr"]
 texture = ExtResource("4_2k3dv")
@@ -50,6 +49,9 @@ margins = Vector2i(2, 0)
 sources/0 = SubResource("TileSetAtlasSource_alqfr")
 sources/2 = SubResource("TileSetAtlasSource_hrcei")
 sources/3 = SubResource("TileSetAtlasSource_xa7n4")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_if4l3"]
+size = Vector2(1155.5, 51.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqkch"]
 size = Vector2(198, 42)
@@ -95,27 +97,35 @@ _data = {
 &"move": SubResource("Animation_6ep0u")
 }
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bo4dx"]
+
 [node name="Level2" type="Node2D"]
 
 [node name="orpheus" parent="." instance=ExtResource("1_d6fun")]
+z_index = 5
 
 [node name="heidi" parent="." instance=ExtResource("2_if4l3")]
+z_index = 5
 script = ExtResource("3_4038r")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("orpheus", "heidi")]
 offset = Vector2(0, -200)
+limit_smoothed = true
 position_smoothing_enabled = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(2, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 25)
-shape = SubResource("RectangleShape2D_if4l3")
+script = ExtResource("4_hrcei")
+orpheus = NodePath("../orpheus")
+heidi = NodePath("../heidi")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AADi/wEAAAAEAAAAAADo/wEAAAAEAAAAAADu/wEAAAAEAAAAAAD0/wEAAAAEAAAAAAD6/wEAAAAEAAAAAAAAAAEAAAAEAAAAAAAGAAEAAAAEAAAAAAAMAAEAAAAEAAAAAAASAAEAAAAEAAAAAAAYAAEAAAAEAAAAAAAeAAEAAAAEAAAAAAAiAAEAAAAKAAAAAADe/wEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_yqkch")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TileMapLayer"]
+position = Vector2(2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer/StaticBody2D"]
+position = Vector2(0, 25)
+shape = SubResource("RectangleShape2D_if4l3")
 
 [node name="platform1" type="AnimatableBody2D" parent="."]
 
@@ -126,6 +136,7 @@ texture = ExtResource("6_6ep0u")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform1"]
 position = Vector2(-318.5, -147)
 shape = SubResource("RectangleShape2D_yqkch")
+one_way_collision = true
 
 [node name="platform2" type="AnimatableBody2D" parent="."]
 position = Vector2(306, -149)
@@ -136,6 +147,7 @@ texture = ExtResource("6_6ep0u")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform2"]
 position = Vector2(-1, 2)
 shape = SubResource("RectangleShape2D_yqkch")
+one_way_collision = true
 
 [node name="platform3" type="AnimatableBody2D" parent="."]
 position = Vector2(0, -46)
@@ -147,9 +159,16 @@ texture = ExtResource("7_6ep0u")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform3"]
 position = Vector2(84, -247)
 shape = SubResource("RectangleShape2D_hrcei")
+one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="platform3"]
 libraries = {
 &"": SubResource("AnimationLibrary_xa7n4")
 }
 autoplay = "move"
+
+[node name="Killzone" parent="." instance=ExtResource("9_xa7n4")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 155)
+shape = SubResource("WorldBoundaryShape2D_bo4dx")
