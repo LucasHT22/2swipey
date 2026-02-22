@@ -2,8 +2,8 @@ extends Panel
 
 @onready var time_bar: ProgressBar = $ProgressBar
 @onready var timer: Timer = $Timer
-@onready var feedback_accept: TextureRect = $accept
-@onready var feedback_decline: TextureRect = $decline
+@onready var feedback_accept: Sprite2D = $Accept
+@onready var feedback_decline: Sprite2D = $Decline
 @onready var feedback_accept_sound: AudioStreamPlayer = $Accepted_sound
 @onready var feedback_decline_sound: AudioStreamPlayer = $Declined_sound
 
@@ -35,8 +35,11 @@ var current_index : int
 @onready var clue_label = $ClueLabel
 
 func get_clue():
-	current_index = randi() % clues.size()
-	clue_label.text = clues[current_index]
+	if Global.progress > 60:
+		get_tree().change_scene_to_file("res://scenes/level2.tscn")
+	else:
+		current_index = randi() % clues.size()
+		clue_label.text = clues[current_index]
 
 func check_answer():
 	var ip_card = Global.input_card
@@ -82,7 +85,6 @@ func _process(delta: float):
 func check_time():
 	if timer.timeout:
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
-
 
 func _on_timer_timeout() -> void:
 	get_tree().change_scene_to_file("res://scenes/level2.tscn")

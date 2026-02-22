@@ -4,17 +4,17 @@
 [ext_resource type="Script" uid="uid://dgipi3k3xawwd" path="res://scripts/line_edit.gd" id="2_cy3nx"]
 [ext_resource type="Script" uid="uid://b8kew4c6vhodw" path="res://scripts/clue_label.gd" id="2_jt2ba"]
 [ext_resource type="Texture2D" uid="uid://dmtqi1mqh3i8k" path="res://assets/lev1bg.png" id="2_wgamx"]
+[ext_resource type="Texture2D" uid="uid://dcqoex83qcqqg" path="res://assets/decline.png" id="3_ib4k8"]
 [ext_resource type="FontFile" uid="uid://bj24recl6gpcy" path="res://assets/DkNouveauCrayonRegular-R2j6.otf" id="4_ib4k8"]
 [ext_resource type="Texture2D" uid="uid://bgklabgxcdwbi" path="res://assets/progbar.PNG" id="4_jhx13"]
-[ext_resource type="Texture2D" path="res://assets/acc.png" id="4_wgamx"]
 [ext_resource type="Texture2D" uid="uid://bb37be0e2wafb" path="res://assets/progbar_prog.PNG" id="5_lw61g"]
 [ext_resource type="Texture2D" uid="uid://dfl1kv2iexatn" path="res://assets/dead.PNG" id="6_51fhk"]
-[ext_resource type="Texture2D" path="res://assets/declined.jpg" id="8_omqc4"]
 [ext_resource type="AudioStream" uid="uid://dpq3jvw700tu4" path="res://assets/accepted_reeves.mp3" id="9_ts4c0"]
 [ext_resource type="AudioStream" uid="uid://m6cwb54b5b7a" path="res://assets/declined_reeves.mp3" id="10_4cyyc"]
 [ext_resource type="Texture2D" uid="uid://g1tm3r6tl236" path="res://assets/white.png" id="11_bttwu"]
 [ext_resource type="Texture2D" uid="uid://cm8rywmugyihn" path="res://assets/safe.png" id="11_y8qnv"]
 [ext_resource type="Texture2D" uid="uid://6155sffjtnnj" path="res://assets/key.png" id="14_lxywc"]
+[ext_resource type="Texture2D" uid="uid://c4nwpi6ggnmn0" path="res://assets/accept.png" id="14_wgamx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18kxd"]
 bg_color = Color(1, 1, 1, 1)
@@ -86,23 +86,13 @@ position = Vector2(421.5, 321.5)
 scale = Vector2(2.6208825, 2.6208825)
 texture = ExtResource("2_wgamx")
 
-[node name="accept" type="TextureRect" parent="Background/MarginContainer/Panel"]
-visible = false
-layout_mode = 0
-offset_left = 208.5
-offset_top = 435.5
-offset_right = 582.5
-offset_bottom = 500.5
-texture = ExtResource("4_wgamx")
-expand_mode = 2
-
 [node name="ProgressBar" type="ProgressBar" parent="Background/MarginContainer/Panel"]
 layout_mode = 0
 offset_left = -1.5
 offset_top = -88.499985
 offset_right = 801.5
 offset_bottom = -37.499985
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_kwfkr")
 theme_override_styles/fill = SubResource("StyleBoxTexture_4pipy")
 max_value = 60.0
@@ -160,28 +150,32 @@ scale = Vector2(2.196913, 2.196913)
 texture = ExtResource("6_51fhk")
 expand_mode = 2
 
-[node name="decline" type="TextureRect" parent="Background/MarginContainer/Panel"]
-visible = false
-layout_mode = 0
-offset_left = 194.5
-offset_top = 420.5
-offset_right = 595.5
-offset_bottom = 499.5
-texture = ExtResource("8_omqc4")
-expand_mode = 2
-
 [node name="Accepted_sound" type="AudioStreamPlayer" parent="Background/MarginContainer/Panel"]
 stream = ExtResource("9_ts4c0")
 
 [node name="Declined_sound" type="AudioStreamPlayer" parent="Background/MarginContainer/Panel"]
 stream = ExtResource("10_4cyyc")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/MarginContainer/Panel"]
+[node name="safe" type="AnimatedSprite2D" parent="Background/MarginContainer/Panel"]
 position = Vector2(407.50006, 238.5)
 scale = Vector2(0.7728472, 0.7728472)
 sprite_frames = SubResource("SpriteFrames_lxywc")
 autoplay = "default"
 frame_progress = 0.11332767
+
+[node name="Accept" type="Sprite2D" parent="Background/MarginContainer/Panel"]
+visible = false
+position = Vector2(20.49997, 67.5)
+rotation = -0.2617994
+scale = Vector2(0.08469114, 0.08469114)
+texture = ExtResource("14_wgamx")
+
+[node name="Decline" type="Sprite2D" parent="Background/MarginContainer/Panel"]
+visible = false
+position = Vector2(22.5, 64.5)
+rotation = -0.2617994
+scale = Vector2(0.15487668, 0.15487668)
+texture = ExtResource("3_ib4k8")
 
 [connection signal="text_submitted" from="Background/MarginContainer/Panel/LineEdit" to="Background/MarginContainer/Panel/LineEdit" method="_on_text_submitted"]
 [connection signal="timeout" from="Background/MarginContainer/Panel/Timer" to="Background/MarginContainer/Panel" method="_on_timer_timeout"]

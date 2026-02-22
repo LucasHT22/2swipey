@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://dasugdubqg1s1"]
 
-[ext_resource type="Script" uid="uid://xmcjbsdlguai" path="res://scripts/heidi.gd" id="1_3erkm"]
+[ext_resource type="Script" path="res://scripts/heidi.gd" id="1_3erkm"]
 [ext_resource type="Texture2D" uid="uid://kvdkdmmom8hp" path="res://assets/heidiattack.PNG" id="1_f0e8s"]
 [ext_resource type="Texture2D" uid="uid://ywefeyw6ts22" path="res://assets/heidiidle.PNG" id="1_s6723"]
 [ext_resource type="Texture2D" uid="uid://bw0mn4ownu7e0" path="res://assets/heidijump.PNG" id="2_r4krq"]
@@ -184,6 +184,7 @@ _data = {
 }
 
 [node name="heidi" type="CharacterBody2D"]
+scale = Vector2(1.4417994, 1.4417994)
 script = ExtResource("1_3erkm")
 
 [node name="hit" type="Area2D" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://b3oetkbhrdxup"]
 
-[ext_resource type="Script" uid="uid://c2aaudgcr33mj" path="res://scripts/orpheus.gd" id="1_1ltk7"]
+[ext_resource type="Script" path="res://scripts/orpheus.gd" id="1_1ltk7"]
 [ext_resource type="Texture2D" uid="uid://fgakw0adp20x" path="res://assets/orpheusidle.PNG" id="1_488sw"]
 [ext_resource type="Texture2D" uid="uid://3qujr21a18ja" path="res://assets/orpheusattack.PNG" id="2_5ecsr"]
 [ext_resource type="Texture2D" uid="uid://b703ftobp13wx" path="res://assets/orpheusjump.PNG" id="3_1sor2"]
@@ -184,6 +184,7 @@ _data = {
 }
 
 [node name="orpheus" type="CharacterBody2D"]
+scale = Vector2(1.4090574, 1.4090574)
 collision_mask = 3
 script = ExtResource("1_1ltk7")
 
