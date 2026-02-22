@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://332xignv3y3i" path="res://assets/platformgrass.PNG" id="5_yqkch"]
 [ext_resource type="Texture2D" uid="uid://c3cmbsjpcw0q2" path="res://assets/platform2small.PNG" id="6_6ep0u"]
 [ext_resource type="Texture2D" uid="uid://dus1bkobhfxsm" path="res://assets/platformlong.png" id="7_6ep0u"]
-[ext_resource type="Script" path="res://scripts/cardinput.gd" id="9_bo4dx"]
+[ext_resource type="Script" uid="uid://cs6skqupd3mws" path="res://scripts/cardinput.gd" id="9_bo4dx"]
 [ext_resource type="PackedScene" path="res://scenes/killzone.tscn" id="9_xa7n4"]
 [ext_resource type="Texture2D" uid="uid://cxfp4amy28adc" path="res://assets/level2bg.png" id="10_bo4dx"]
 [ext_resource type="Texture2D" uid="uid://uh06bywxmf1f" path="res://assets/instructionslev2.png" id="11_76toy"]

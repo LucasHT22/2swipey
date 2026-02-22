@@ -12,20 +12,16 @@ const TIME_BONUS: float = 20.0
 const TIME_LOST: float = 5.0
 
 var clues = [
-	"burrito bowl",
 	"island money",
 	"buy in bulk",
-	"strrrrrrrrrrrrrrrrrrrike!",
 	"merchant joseph",
 	"public transport",
 	"passport"
 ]
 
 var results = [
-	"%B6010563596189797^CHIPOTLE",
 	"%B4859530006682470^",
 	"%7001112034796255^",
-	"%6686=6673103695066313650?",
 	"%B5896295042795981",
 	"%B6398840026017826281^07675055494$01500",
 	"%B4097581493304310^A GIFT FOR YOU^"

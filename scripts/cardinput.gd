@@ -4,8 +4,8 @@ extends LineEdit
 @onready var orpheus = get_node("/root/Level2/orpheus")
 
 const playercards = [
-	";3106080019916304577?",
-	";3106080048216304567?"
+	"%b5896295042795981",
+	"%b6398840026017826"
 ]
 
 func _ready():
