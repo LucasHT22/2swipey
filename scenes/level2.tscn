@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dasugdubqg1s1" path="res://scenes/heidi.tscn" id="2_if4l3"]
 [ext_resource type="Texture2D" uid="uid://c6a2uillg71ax" path="res://assets/platformsmall.PNG" id="4_2k3dv"]
 [ext_resource type="Script" uid="uid://bso68vklhlo3g" path="res://scripts/camera_2d.gd" id="4_hrcei"]
-[ext_resource type="Texture2D" uid="uid://bb37be0e2wafb" path="res://assets/platformgrasssmall.PNG" id="5_yqkch"]
+[ext_resource type="Texture2D" path="res://assets/platformgrasssmall.PNG" id="5_yqkch"]
 [ext_resource type="Texture2D" uid="uid://c3cmbsjpcw0q2" path="res://assets/platform2small.PNG" id="6_6ep0u"]
 [ext_resource type="Texture2D" uid="uid://dus1bkobhfxsm" path="res://assets/platformlong.png" id="7_6ep0u"]
 [ext_resource type="Script" uid="uid://cs6skqupd3mws" path="res://scripts/cardinput.gd" id="9_bo4dx"]
