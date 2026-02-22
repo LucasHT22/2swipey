@@ -51,7 +51,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		var dir = sign(self.position.x - area.get_parent().position.x)
 		if Global.is_new_card:
 			print("special attack")
-			knockback = Vector2(dir * SPEED * 2, randi_range(-700,-400))
+			knockback = Vector2(dir * SPEED * 2, randi_range(-2000,-1000))
 			Global.is_new_card = false
 		else:
 			print("not special attack")

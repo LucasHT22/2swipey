@@ -1,9 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl6ylyrv28ki7"]
+[gd_scene load_steps=15 format=3 uid="uid://dl6ylyrv28ki7"]
 
+[ext_resource type="Script" uid="uid://bukep4hho276q" path="res://scripts/game_over.gd" id="1_irg28"]
 [ext_resource type="Texture2D" uid="uid://c1qbsbab87hu" path="res://assets/gameover_g.png" id="1_wqhvx"]
 [ext_resource type="Texture2D" uid="uid://dutu3iu7ia6sk" path="res://assets/gameover_o.png" id="2_tbwuq"]
 [ext_resource type="Texture2D" uid="uid://pkb64duaowxy" path="res://assets/yousuck.png" id="3_tbwuq"]
 [ext_resource type="Texture2D" uid="uid://cxfp4amy28adc" path="res://assets/level2bg.png" id="4_racf3"]
+[ext_resource type="Texture2D" uid="uid://bcfbp6rimhejx" path="res://assets/orpheus.png" id="5_v3hpu"]
+[ext_resource type="Texture2D" uid="uid://go6q3w23avpp" path="res://assets/heidi.png" id="6_irg28"]
+[ext_resource type="Texture2D" uid="uid://ytww432j4wkw" path="res://assets/black.png" id="8_wawo4"]
+[ext_resource type="Texture2D" uid="uid://44l064d5s3du" path="res://assets/text1.png" id="9_56v3a"]
+[ext_resource type="Texture2D" uid="uid://cnpkp68jjmxo7" path="res://assets/text2.png" id="10_o57t2"]
+[ext_resource type="AudioStream" uid="uid://86u33o8887ob" path="res://assets/endingaud1.mp3" id="11_o57t2"]
+[ext_resource type="Texture2D" uid="uid://c24x4bcfxnh2p" path="res://assets/text3.png" id="11_uq3qu"]
+[ext_resource type="AudioStream" uid="uid://50ef41cr3taa" path="res://assets/endingaud2.mp3" id="12_uq3qu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_racf3"]
 animations = [{
@@ -20,17 +29,18 @@ animations = [{
 }]
 
 [node name="GameOver" type="Node2D"]
+script = ExtResource("1_irg28")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel1" type="Panel" parent="."]
 offset_right = 1147.0
 offset_bottom = 657.0
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel1"]
 layout_mode = 0
 offset_right = 1157.0
 offset_bottom = 662.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel/MarginContainer"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel1/MarginContainer"]
 z_index = 3
 position = Vector2(581, 227.00002)
 scale = Vector2(0.34420356, 0.34420356)
@@ -38,13 +48,70 @@ sprite_frames = SubResource("SpriteFrames_racf3")
 autoplay = "default"
 frame_progress = 0.34695834
 
-[node name="Yousuck" type="Sprite2D" parent="."]
+[node name="Yousuck" type="Sprite2D" parent="Panel1"]
 z_index = 3
-position = Vector2(555, 537)
+position = Vector2(706, 532.00006)
 scale = Vector2(0.17770627, 0.17770627)
 texture = ExtResource("3_tbwuq")
 
-[node name="Level2Bg" type="Sprite2D" parent="."]
+[node name="Level2Bg" type="Sprite2D" parent="Panel1"]
 position = Vector2(572.99994, 435.99997)
 scale = Vector2(0.526963, 0.526963)
 texture = ExtResource("4_racf3")
+
+[node name="orpheusscreen" type="Node2D" parent="Panel1"]
+visible = false
+
+[node name="Orpheus" type="Sprite2D" parent="Panel1/orpheusscreen"]
+position = Vector2(343, 538)
+scale = Vector2(0.21267614, 0.21267614)
+texture = ExtResource("5_v3hpu")
+
+[node name="heidiscreen" type="Node2D" parent="Panel1"]
+visible = false
+
+[node name="Heidi" type="Sprite2D" parent="Panel1/heidiscreen"]
+position = Vector2(384, 533)
+scale = Vector2(0.22839537, 0.22839537)
+texture = ExtResource("6_irg28")
+
+[node name="Timer" type="Timer" parent="Panel1"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Panel2" type="Panel" parent="."]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Black" type="Sprite2D" parent="Panel2"]
+position = Vector2(580, 327.5)
+scale = Vector2(4.632, 2.636)
+texture = ExtResource("8_wawo4")
+
+[node name="Text1" type="Sprite2D" parent="Panel2"]
+visible = false
+position = Vector2(581.4579, 244.84767)
+scale = Vector2(0.10980934, 0.10980934)
+texture = ExtResource("9_56v3a")
+
+[node name="Text2" type="Sprite2D" parent="Panel2"]
+visible = false
+position = Vector2(469, 344.00003)
+scale = Vector2(0.11243111, 0.11243111)
+texture = ExtResource("10_o57t2")
+
+[node name="Text3" type="Sprite2D" parent="Panel2"]
+visible = false
+position = Vector2(234.99998, 499.99994)
+scale = Vector2(0.10838141, 0.10838141)
+texture = ExtResource("11_uq3qu")
+
+[node name="endingaud1" type="AudioStreamPlayer" parent="Panel2"]
+stream = ExtResource("11_o57t2")
+
+[node name="endingaud2" type="AudioStreamPlayer" parent="Panel2"]
+stream = ExtResource("12_uq3qu")
+
+[connection signal="timeout" from="Panel1/Timer" to="." method="_on_timer_timeout"]
