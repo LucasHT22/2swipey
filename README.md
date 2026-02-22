@@ -1,4 +1,4 @@
-# 2swipe
+# 2$wipey
 A video game controlled with a magnetic stripe reader.
 
 Decode the puzzle and break into a safe with your best buddy and then fight them super-smash style so you can have all the gold for yourself. Swipe the correct credit card to unlock the safe, and then swipe as fast as you can to shove your buddy off the edge of the platform.               
