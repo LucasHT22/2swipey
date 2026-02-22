@@ -1,14 +1,15 @@
-[gd_scene load_steps=21 format=4 uid="uid://b8am3hpwh01ro"]
+[gd_scene load_steps=22 format=4 uid="uid://b8am3hpwh01ro"]
 
 [ext_resource type="PackedScene" uid="uid://b3oetkbhrdxup" path="res://scenes/orpheus.tscn" id="1_d6fun"]
 [ext_resource type="PackedScene" uid="uid://dasugdubqg1s1" path="res://scenes/heidi.tscn" id="2_if4l3"]
 [ext_resource type="Texture2D" uid="uid://c6a2uillg71ax" path="res://assets/platformsmall.PNG" id="4_2k3dv"]
 [ext_resource type="Script" uid="uid://bso68vklhlo3g" path="res://scripts/camera_2d.gd" id="4_hrcei"]
-[ext_resource type="Texture2D" path="res://assets/platformgrasssmall.PNG" id="5_yqkch"]
+[ext_resource type="Texture2D" uid="uid://332xignv3y3i" path="res://assets/platformgrass.PNG" id="5_yqkch"]
 [ext_resource type="Texture2D" uid="uid://c3cmbsjpcw0q2" path="res://assets/platform2small.PNG" id="6_6ep0u"]
 [ext_resource type="Texture2D" uid="uid://dus1bkobhfxsm" path="res://assets/platformlong.png" id="7_6ep0u"]
 [ext_resource type="Script" uid="uid://cs6skqupd3mws" path="res://scripts/cardinput.gd" id="9_bo4dx"]
 [ext_resource type="PackedScene" uid="uid://v5uxfxkiw0fh" path="res://scenes/killzone.tscn" id="9_xa7n4"]
+[ext_resource type="Texture2D" uid="uid://cxfp4amy28adc" path="res://assets/level2bg.png" id="10_bo4dx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_alqfr"]
 texture = ExtResource("4_2k3dv")
@@ -103,22 +104,25 @@ _data = {
 
 [node name="orpheus" parent="." instance=ExtResource("1_d6fun")]
 z_index = 5
-position = Vector2(-330, -187)
+position = Vector2(-147, -101)
 
 [node name="heidi" parent="." instance=ExtResource("2_if4l3")]
 z_index = 5
-position = Vector2(313, -192)
+position = Vector2(142, -115)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("orpheus", "heidi")]
 offset = Vector2(0, -200)
-limit_top = -450
-limit_smoothed = true
+limit_left = -1000
+limit_top = -500
+limit_right = 1000
+limit_bottom = 500
 position_smoothing_enabled = true
 script = ExtResource("4_hrcei")
 orpheus = NodePath("../orpheus")
 heidi = NodePath("../heidi")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = 3
 tile_map_data = PackedByteArray("AADi/wEAAAAEAAAAAADo/wEAAAAEAAAAAADu/wEAAAAEAAAAAAD0/wEAAAAEAAAAAAD6/wEAAAAEAAAAAAAAAAEAAAAEAAAAAAAGAAEAAAAEAAAAAAAMAAEAAAAEAAAAAAASAAEAAAAEAAAAAAAYAAEAAAAEAAAAAAAeAAEAAAAEAAAAAAAiAAEAAAAKAAAAAADe/wEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_yqkch")
 
@@ -130,6 +134,7 @@ position = Vector2(0, 25)
 shape = SubResource("RectangleShape2D_if4l3")
 
 [node name="platform1" type="AnimatableBody2D" parent="."]
+z_index = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="platform1"]
 position = Vector2(-318.5, -149)
@@ -141,6 +146,7 @@ shape = SubResource("RectangleShape2D_yqkch")
 one_way_collision = true
 
 [node name="platform2" type="AnimatableBody2D" parent="."]
+z_index = 3
 position = Vector2(306, -149)
 
 [node name="Sprite2D" type="Sprite2D" parent="platform2"]
@@ -152,6 +158,7 @@ shape = SubResource("RectangleShape2D_yqkch")
 one_way_collision = true
 
 [node name="platform3" type="AnimatableBody2D" parent="."]
+z_index = 3
 position = Vector2(0, -46)
 
 [node name="Sprite2D" type="Sprite2D" parent="platform3"]
@@ -183,5 +190,10 @@ offset_right = 805.0
 offset_bottom = 489.0
 keep_editing_on_text_submit = true
 script = ExtResource("9_bo4dx")
+
+[node name="Level2Bg" type="Sprite2D" parent="."]
+position = Vector2(-6, 111)
+scale = Vector2(0.76417196, 0.76417196)
+texture = ExtResource("10_bo4dx")
 
 [connection signal="text_submitted" from="cardinput" to="cardinput" method="_on_text_submitted"]

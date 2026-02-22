@@ -1,15 +1,20 @@
-[gd_scene load_steps=15 format=3 uid="uid://yiw4hedt8ij6"]
+[gd_scene load_steps=23 format=3 uid="uid://yiw4hedt8ij6"]
 
 [ext_resource type="Script" uid="uid://cp8kumn0481eu" path="res://scripts/Panel.gd" id="1_hnfoo"]
 [ext_resource type="Script" uid="uid://dgipi3k3xawwd" path="res://scripts/line_edit.gd" id="2_cy3nx"]
 [ext_resource type="Script" uid="uid://b8kew4c6vhodw" path="res://scripts/clue_label.gd" id="2_jt2ba"]
+[ext_resource type="Texture2D" uid="uid://dmtqi1mqh3i8k" path="res://assets/lev1bg.png" id="2_wgamx"]
+[ext_resource type="FontFile" uid="uid://bj24recl6gpcy" path="res://assets/DkNouveauCrayonRegular-R2j6.otf" id="4_ib4k8"]
 [ext_resource type="Texture2D" uid="uid://bgklabgxcdwbi" path="res://assets/progbar.PNG" id="4_jhx13"]
+[ext_resource type="Texture2D" path="res://assets/acc.png" id="4_wgamx"]
 [ext_resource type="Texture2D" uid="uid://bb37be0e2wafb" path="res://assets/progbar_prog.PNG" id="5_lw61g"]
 [ext_resource type="Texture2D" uid="uid://dfl1kv2iexatn" path="res://assets/dead.PNG" id="6_51fhk"]
-[ext_resource type="Texture2D" uid="uid://db0nafg75knfv" path="res://assets/accepted.jpg" id="7_co030"]
-[ext_resource type="Texture2D" uid="uid://bii51m3buvq35" path="res://assets/declined.jpg" id="8_omqc4"]
+[ext_resource type="Texture2D" path="res://assets/declined.jpg" id="8_omqc4"]
 [ext_resource type="AudioStream" uid="uid://dpq3jvw700tu4" path="res://assets/accepted_reeves.mp3" id="9_ts4c0"]
 [ext_resource type="AudioStream" uid="uid://m6cwb54b5b7a" path="res://assets/declined_reeves.mp3" id="10_4cyyc"]
+[ext_resource type="Texture2D" uid="uid://g1tm3r6tl236" path="res://assets/white.png" id="11_bttwu"]
+[ext_resource type="Texture2D" uid="uid://cm8rywmugyihn" path="res://assets/safe.png" id="11_y8qnv"]
+[ext_resource type="Texture2D" uid="uid://6155sffjtnnj" path="res://assets/key.png" id="14_lxywc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18kxd"]
 bg_color = Color(1, 1, 1, 1)
@@ -20,7 +25,31 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4pipy"]
 texture = ExtResource("5_lw61g")
 
-[sub_resource type="ImageTexture" id="ImageTexture_dqtyi"]
+[sub_resource type="LabelSettings" id="LabelSettings_ib4k8"]
+font = ExtResource("4_ib4k8")
+font_size = 70
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8qnv"]
+atlas = ExtResource("11_y8qnv")
+region = Rect2(0, 0, 777, 692)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bttwu"]
+atlas = ExtResource("11_y8qnv")
+region = Rect2(927, 0, 777, 692)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lxywc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8qnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bttwu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="TipsMenu" type="Node2D"]
 
@@ -47,12 +76,32 @@ grow_vertical = 2
 layout_mode = 2
 script = ExtResource("1_hnfoo")
 
+[node name="White" type="Sprite2D" parent="Background/MarginContainer/Panel"]
+position = Vector2(407, 214.5)
+scale = Vector2(4.275, 2.18)
+texture = ExtResource("11_bttwu")
+
+[node name="Lev1Bg" type="Sprite2D" parent="Background/MarginContainer/Panel"]
+position = Vector2(421.5, 321.5)
+scale = Vector2(2.6208825, 2.6208825)
+texture = ExtResource("2_wgamx")
+
+[node name="accept" type="TextureRect" parent="Background/MarginContainer/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 208.5
+offset_top = 435.5
+offset_right = 582.5
+offset_bottom = 500.5
+texture = ExtResource("4_wgamx")
+expand_mode = 2
+
 [node name="ProgressBar" type="ProgressBar" parent="Background/MarginContainer/Panel"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = -70.0
-offset_right = 804.0
-offset_bottom = -19.0
+offset_left = -1.5
+offset_top = -88.499985
+offset_right = 801.5
+offset_bottom = -37.499985
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_kwfkr")
 theme_override_styles/fill = SubResource("StyleBoxTexture_4pipy")
@@ -68,43 +117,18 @@ offset_bottom = 478.0
 texture_under = ExtResource("4_jhx13")
 texture_progress = ExtResource("5_lw61g")
 
-[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/Panel"]
-layout_mode = 0
-offset_left = 2.5
-offset_top = 48.5
-offset_right = 802.5
-offset_bottom = 453.5
-texture = SubResource("ImageTexture_dqtyi")
-
-[node name="ColorRect" type="ColorRect" parent="Background/MarginContainer/Panel/TextureRect"]
-layout_mode = 0
-offset_left = -1.0
-offset_top = -48.0
-offset_right = 801.0
-offset_bottom = 366.0
-color = Color(0, 0.443756, 0.443756, 1)
-
 [node name="ClueLabel" type="Label" parent="Background/MarginContainer/Panel"]
+z_index = 5
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 807.0
-offset_bottom = 410.0
+offset_left = 0.5
+offset_top = 157.5
+offset_right = 806.5
+offset_bottom = 566.5
 theme_override_font_sizes/font_size = 50
+label_settings = SubResource("LabelSettings_ib4k8")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_jt2ba")
-
-[node name="Label" type="Label" parent="Background/MarginContainer/Panel"]
-layout_mode = 0
-offset_left = 3.5
-offset_top = 8.5
-offset_right = 806.5
-offset_bottom = 82.5
-theme_override_font_sizes/font_size = 30
-text = "Tell your partner to swipe..."
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="LineEdit" type="LineEdit" parent="Background/MarginContainer/Panel"]
 modulate = Color(1, 1, 1, 0)
@@ -120,24 +144,20 @@ wait_time = 60.0
 one_shot = true
 autostart = true
 
-[node name="TextureRect2" type="TextureRect" parent="Background/MarginContainer/Panel"]
-layout_mode = 0
-offset_left = -207.5
-offset_top = -176.5
-offset_right = -109.5
-offset_bottom = -94.5
-scale = Vector2(2.456287, 2.456287)
-texture = ExtResource("6_51fhk")
-expand_mode = 2
+[node name="Key" type="Sprite2D" parent="Background/MarginContainer/Panel"]
+position = Vector2(880.5, -70.50003)
+rotation = 0.2617994
+scale = Vector2(0.15486242, 0.15486242)
+texture = ExtResource("14_lxywc")
 
-[node name="accept" type="TextureRect" parent="Background/MarginContainer/Panel"]
-visible = false
+[node name="dead" type="TextureRect" parent="Background/MarginContainer/Panel"]
 layout_mode = 0
-offset_left = 208.5
-offset_top = 435.5
-offset_right = 582.5
-offset_bottom = 500.5
-texture = ExtResource("7_co030")
+offset_left = -196.5
+offset_top = -173.5
+offset_right = -98.5
+offset_bottom = -91.5
+scale = Vector2(2.196913, 2.196913)
+texture = ExtResource("6_51fhk")
 expand_mode = 2
 
 [node name="decline" type="TextureRect" parent="Background/MarginContainer/Panel"]
@@ -157,6 +177,11 @@ stream = ExtResource("9_ts4c0")
 stream = ExtResource("10_4cyyc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/MarginContainer/Panel"]
+position = Vector2(407.50006, 238.5)
+scale = Vector2(0.7728472, 0.7728472)
+sprite_frames = SubResource("SpriteFrames_lxywc")
+autoplay = "default"
+frame_progress = 0.11332767
 
 [connection signal="text_submitted" from="Background/MarginContainer/Panel/LineEdit" to="Background/MarginContainer/Panel/LineEdit" method="_on_text_submitted"]
 [connection signal="timeout" from="Background/MarginContainer/Panel/Timer" to="Background/MarginContainer/Panel" method="_on_timer_timeout"]
