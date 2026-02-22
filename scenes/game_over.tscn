@@ -35,6 +35,7 @@ z_index = 3
 position = Vector2(581, 227.00002)
 scale = Vector2(0.34420356, 0.34420356)
 sprite_frames = SubResource("SpriteFrames_racf3")
+autoplay = "default"
 frame_progress = 0.34695834
 
 [node name="Yousuck" type="Sprite2D" parent="."]
